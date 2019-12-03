@@ -5,7 +5,6 @@ import {
   ɵcreateInjector as createInjector,
   Injector
 } from "@angular/core";
-import { LazyLoaderService } from "./lazy-loader.service";
 
 @Component({
   selector: "app-root",
@@ -16,13 +15,9 @@ export class AppComponent {
   @ViewChild("testOutlet", { read: ViewContainerRef, static: true })
   testOutlet: ViewContainerRef | undefined;
 
-  constructor(
-    private lazyLoaderService: LazyLoaderService,
-    private injector: Injector
-  ) {}
+  constructor(private injector: Injector) {}
 
   onLazy() {
-    //this.lazyLoaderService.loadModule(() =>
     import("./lazy/lazy.module").then(({ LazyModule }) => {
       const injector = createInjector(LazyModule, this.injector);
       const lazyModule = injector.get(LazyModule);
@@ -31,6 +26,5 @@ export class AppComponent {
       const componentRef = this.testOutlet.createComponent(componentFactory);
       componentRef.changeDetectorRef.markForCheck();
     });
-    // );
   }
 }
