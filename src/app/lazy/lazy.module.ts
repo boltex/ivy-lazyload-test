@@ -1,12 +1,21 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {
+  NgModule,
+  ComponentFactoryResolver,
+  ComponentFactory
+} from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { LazyComponent } from "./lazy.component";
 
 @NgModule({
-  declarations: [],
-  imports: [CommonModule]
+  imports: [CommonModule],
+  declarations: [LazyComponent]
 })
 export class LazyModule {
-  constructor() {
-    console.log('lazy loaded: 🔥');
+  constructor(private resolver: ComponentFactoryResolver) {
+    console.log("lazy loaded: 🔥");
+  }
+
+  public resolveLazyComponentFactory(): ComponentFactory<LazyComponent> {
+    return this.resolver.resolveComponentFactory(LazyComponent);
   }
 }
