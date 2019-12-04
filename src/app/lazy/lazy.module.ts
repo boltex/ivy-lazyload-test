@@ -12,6 +12,7 @@ import { LazyComponent } from "./lazy.component";
 })
 export class LazyModule {
   constructor(private resolver: ComponentFactoryResolver) {
+    // constructor() {
     console.log("lazy loaded: 🔥");
   }
 
