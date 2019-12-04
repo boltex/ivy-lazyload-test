@@ -1,7 +1,7 @@
 import {
-  NgModule,
-  ComponentFactoryResolver,
-  ComponentFactory
+  NgModule
+  // ComponentFactoryResolver,
+  // ComponentFactory
 } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { LazyComponent } from "./lazy.component";
@@ -11,12 +11,12 @@ import { LazyComponent } from "./lazy.component";
   declarations: [LazyComponent]
 })
 export class LazyModule {
-  constructor(private resolver: ComponentFactoryResolver) {
-    // constructor() {
+  // constructor(private resolver: ComponentFactoryResolver) {
+  constructor() {
     console.log("lazy loaded: 🔥");
   }
 
-  public resolveLazyComponentFactory(): ComponentFactory<LazyComponent> {
-    return this.resolver.resolveComponentFactory(LazyComponent);
-  }
+  // public resolveLazyComponentFactory(): ComponentFactory<LazyComponent> {
+  //   return this.resolver.resolveComponentFactory(LazyComponent);
+  // }
 }

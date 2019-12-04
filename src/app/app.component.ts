@@ -2,7 +2,7 @@ import {
   Component,
   ViewChild,
   ViewContainerRef,
-  ɵcreateInjector as createInjector,
+  // ɵcreateInjector as createInjector,
   Injector,
   ComponentFactoryResolver,
   ChangeDetectionStrategy
@@ -24,24 +24,25 @@ export class AppComponent {
   ) {}
 
   onLazy() {
-    import("./lazy/lazy.module").then(({ LazyModule }) => {
-      // const componentFactory = this.resolver.resolveComponentFactory(
-      //   LazyModule
-      // );
-      // const componentRef = this.testOutlet.createComponent(
-      //   componentFactory,
-      //   0,
-      //   this.injector
-      // );
-      // componentRef.changeDetectorRef.markForCheck();
-
-      //
-
-      const injector = createInjector(LazyModule, this.injector);
-      const lazyModule = injector.get(LazyModule);
-      const componentFactory = lazyModule.resolveLazyComponentFactory();
-      const componentRef = this.testOutlet.createComponent(componentFactory);
+    // import("./lazy/lazy.module").then(({ LazyModule }) => {
+    import("./lazy/lazy.component").then(({ LazyComponent }) => {
+      const componentFactory = this.resolver.resolveComponentFactory(
+        LazyComponent
+      );
+      const componentRef = this.testOutlet.createComponent(
+        componentFactory,
+        0,
+        this.injector
+      );
       componentRef.changeDetectorRef.markForCheck();
+
+      // standard
+      //
+      // const injector = createInjector(LazyModule, this.injector);
+      // const lazyModule = injector.get(LazyModule);
+      // const componentFactory = lazyModule.resolveLazyComponentFactory();
+      // const componentRef = this.testOutlet.createComponent(componentFactory);
+      // componentRef.changeDetectorRef.markForCheck();
     });
   }
 }
