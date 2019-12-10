@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 
 // { providedIn: "root" }
+// * test for service individualy loaded in each component instance (NOT providedIn: "root" )
 
 @Injectable()
 export class OcxService {

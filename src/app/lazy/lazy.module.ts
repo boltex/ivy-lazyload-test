@@ -18,14 +18,10 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 export class LazyModule {
   // constructor(private resolver: ComponentFactoryResolver) {
   constructor() {
-    console.log("lazy loaded: 🔥");
+    console.log("lazy loaded the LazyModule!");
   }
 
-  static getMyComponent() {
+  static getComponent() {
     return LazyComponent;
   }
-
-  // public resolveLazyComponentFactory(): ComponentFactory<LazyComponent> {
-  //   return this.resolver.resolveComponentFactory(LazyComponent);
-  // }
 }

@@ -2,8 +2,6 @@ import {
   Component,
   ViewChild,
   ViewContainerRef,
-  // ɵcreateInjector as createInjector,
-  // Injector,
   ComponentFactoryResolver,
   ChangeDetectionStrategy
 } from "@angular/core";
@@ -22,26 +20,12 @@ export class AppComponent {
 
   onLazy() {
     import("./lazy/lazy.module").then(({ LazyModule }) => {
-      // import("./lazy/lazy.component").then(({ LazyComponent }) => {
-      /* const componentFactory = this.resolver.resolveComponentFactory(
-        LazyComponent
-      );
-      const componentRef = this.testOutlet.createComponent(
-        componentFactory,
-        0,
-        this.injector
-      );
-      componentRef.changeDetectorRef.markForCheck(); */
-
-      // const injector = createInjector(LazyModule, this.injector);
-      // const lazyModule = injector.get(LazyModule);
-      const MyComponent = LazyModule.getMyComponent();
-      // const componentFactory = lazyModule.resolveLazyComponentFactory();
+      const componentFromLazyModule = LazyModule.getComponent();
       const componentFactory = this.resolver.resolveComponentFactory(
-        MyComponent
+        componentFromLazyModule
       );
       const componentRef = this.testOutlet.createComponent(componentFactory);
-      // for detection
+      // for event detection
       componentRef.changeDetectorRef.markForCheck();
     });
   }

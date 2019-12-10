@@ -26,9 +26,10 @@ export class LazyComponent implements OnInit, AfterViewInit {
   }
 
   public testme(): void {
-    console.log("called testme in lazy component, gonna call testservice now");
+    // Test the individualy loaded service
     this.myService.test();
   }
+
   public toggleCitiesControl() {
     this.isCitiesControlVisible = !this.isCitiesControlVisible;
   }

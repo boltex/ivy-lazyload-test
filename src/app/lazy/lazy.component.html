@@ -1,10 +1,11 @@
 <h2>Lazy-loaded content</h2>
 <button type="button"
         (click)="testme();">test LOCALLY injected 'myService'</button>
+<br><br>
 
-<!-- <form [formGroup]="heroForm">
+<form [formGroup]="heroForm">
   <div class="form-group">
-    <label for="state">ngSelect test - City</label>
+    <label for="state">ngSelect test :</label>
     <ng-select *ngIf="isCitiesControlVisible"
                [items]="cities"
                bindLabel="name"
@@ -15,10 +16,12 @@
                clearAllText="Clear"
                formControlName="selectedCitiesIds">
     </ng-select>
-    <br>
-    <button (click)="toggleCitiesControl()"
-            class="btn btn-sm btn-secondary">Show/Hide</button>
-    <button (click)="clearCities()"
-            class="btn btn-sm btn-secondary">Clear</button>
+
   </div>
-</form> -->
+</form>
+
+<br>
+<button (click)="toggleCitiesControl()"
+        class="btn btn-sm btn-secondary">Show/Hide ng-select</button>
+<button (click)="clearCities()"
+        class="btn btn-sm btn-secondary">Clear</button>
