@@ -1,7 +1,7 @@
 import {
-  NgModule,
-  ComponentFactoryResolver,
-  ComponentFactory
+  NgModule
+  // ComponentFactoryResolver,
+  // ComponentFactory
 } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { LazyComponent } from "./lazy.component";
@@ -16,12 +16,16 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
   exports: [LazyComponent]
 })
 export class LazyModule {
-  constructor(private resolver: ComponentFactoryResolver) {
-    // constructor() {
+  // constructor(private resolver: ComponentFactoryResolver) {
+  constructor() {
     console.log("lazy loaded: 🔥");
   }
 
-  public resolveLazyComponentFactory(): ComponentFactory<LazyComponent> {
-    return this.resolver.resolveComponentFactory(LazyComponent);
+  static getMyComponent() {
+    return LazyComponent;
   }
+
+  // public resolveLazyComponentFactory(): ComponentFactory<LazyComponent> {
+  //   return this.resolver.resolveComponentFactory(LazyComponent);
+  // }
 }
