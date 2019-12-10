@@ -1,6 +1,13 @@
+:host {
+  display: inline-block;
+}
 h2 {
   color: blue;
 }
 p {
   color: red;
+}
+.box-outline {
+  border: 1px solid #909090;
+  padding: 20px;
 }

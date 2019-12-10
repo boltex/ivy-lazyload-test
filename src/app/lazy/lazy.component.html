@@ -1,27 +1,29 @@
-<h2>Lazy-loaded content</h2>
-<button type="button"
-        (click)="testme();">test LOCALLY injected 'myService'</button>
-<br><br>
+<div class="box-outline">
+  <h2>Lazy-loaded content</h2>
+  <button type="button"
+          (click)="testme();">test LOCALLY injected 'myService'</button>
+  <br><br>
 
-<form [formGroup]="heroForm">
-  <div class="form-group">
-    <label for="state">ngSelect test :</label>
-    <ng-select *ngIf="isCitiesControlVisible"
-               [items]="cities"
-               bindLabel="name"
-               bindValue="id"
-               labelForId="state"
-               [multiple]="true"
-               placeholder="Select cities"
-               clearAllText="Clear"
-               formControlName="selectedCitiesIds">
-    </ng-select>
+  <form [formGroup]="heroForm">
+    <div class="form-group">
+      <label for="state">ngSelect test :</label>
+      <ng-select *ngIf="isCitiesControlVisible"
+                 [items]="cities"
+                 bindLabel="name"
+                 bindValue="id"
+                 labelForId="state"
+                 [multiple]="true"
+                 placeholder="Select cities"
+                 clearAllText="Clear"
+                 formControlName="selectedCitiesIds">
+      </ng-select>
 
-  </div>
-</form>
+    </div>
+  </form>
 
-<br>
-<button (click)="toggleCitiesControl()"
-        class="btn btn-sm btn-secondary">test Show/Hide ng-select</button>
-<button (click)="clearCities()"
-        class="btn btn-sm btn-secondary">test Clear model</button>
+  <br>
+  <button (click)="toggleCitiesControl()"
+          class="btn btn-sm btn-secondary">test Show/Hide ng-select</button>
+  <button (click)="clearCities()"
+          class="btn btn-sm btn-secondary">test Clear model</button>
+</div>
