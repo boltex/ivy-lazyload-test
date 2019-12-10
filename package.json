@@ -21,6 +21,8 @@
     "@angular/platform-browser": "~9.0.0-rc.0",
     "@angular/platform-browser-dynamic": "~9.0.0-rc.0",
     "@angular/router": "~9.0.0-rc.0",
+    "@ng-select/ng-option-highlight": "0.0.2",
+    "@ng-select/ng-select": "^3.7.0",
     "rxjs": "~6.5.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

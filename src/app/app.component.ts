@@ -2,9 +2,9 @@ import {
   Component,
   ViewChild,
   ViewContainerRef,
-  // ɵcreateInjector as createInjector,
+  ɵcreateInjector as createInjector,
   Injector,
-  ComponentFactoryResolver,
+  // ComponentFactoryResolver,
   ChangeDetectionStrategy
 } from "@angular/core";
 
@@ -19,14 +19,14 @@ export class AppComponent {
   testOutlet: ViewContainerRef | undefined;
 
   constructor(
-    private resolver: ComponentFactoryResolver,
+    // private resolver: ComponentFactoryResolver,
     private injector: Injector
   ) {}
 
   onLazy() {
-    // import("./lazy/lazy.module").then(({ LazyModule }) => {
-    import("./lazy/lazy.component").then(({ LazyComponent }) => {
-      const componentFactory = this.resolver.resolveComponentFactory(
+    import("./lazy/lazy.module").then(({ LazyModule }) => {
+      // import("./lazy/lazy.component").then(({ LazyComponent }) => {
+      /* const componentFactory = this.resolver.resolveComponentFactory(
         LazyComponent
       );
       const componentRef = this.testOutlet.createComponent(
@@ -34,15 +34,13 @@ export class AppComponent {
         0,
         this.injector
       );
-      componentRef.changeDetectorRef.markForCheck();
+      componentRef.changeDetectorRef.markForCheck(); */
 
-      // standard
-      //
-      // const injector = createInjector(LazyModule, this.injector);
-      // const lazyModule = injector.get(LazyModule);
-      // const componentFactory = lazyModule.resolveLazyComponentFactory();
-      // const componentRef = this.testOutlet.createComponent(componentFactory);
-      // componentRef.changeDetectorRef.markForCheck();
+      const injector = createInjector(LazyModule, this.injector);
+      const lazyModule = injector.get(LazyModule);
+      const componentFactory = lazyModule.resolveLazyComponentFactory();
+      const componentRef = this.testOutlet.createComponent(componentFactory);
+      componentRef.changeDetectorRef.markForCheck();
     });
   }
 }
