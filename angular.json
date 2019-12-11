@@ -25,6 +25,10 @@
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss"],
+            "lazyModules": [
+              "src/app/lazy/lazy.module",
+              "src/app/foo/foo.module"
+            ],
             "scripts": []
           },
           "configurations": {

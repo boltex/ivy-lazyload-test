@@ -1,15 +1,14 @@
 <div class="box-outline">
-  <h2>Lazy-loaded content</h2>
+  <h2>Another lazy-loaded module!</h2>
   <button type="button"
-          (click)="testme();">test LOCALLY injected 'myService'</button>
+          (click)="testme();">also test LOCALLY injected 'myService'</button>
   count : {{count}}
   <br><br>
 
   <form [formGroup]="heroForm">
     <div class="form-group">
       <label for="state">ngSelect test :</label>
-      <ng-select *ngIf="isCitiesControlVisible"
-                 [items]="cities"
+      <ng-select [items]="cities"
                  bindLabel="name"
                  bindValue="id"
                  labelForId="state"
@@ -22,8 +21,6 @@
   </form>
 
   <br>
-  <button (click)="toggleCitiesControl()"
-          class="btn btn-sm btn-secondary">test Show/Hide ng-select</button>
   <button (click)="clearCities()"
           class="btn btn-sm btn-secondary">test Clear model</button>
 </div>

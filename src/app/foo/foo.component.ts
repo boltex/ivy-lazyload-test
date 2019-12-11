@@ -1,31 +1,24 @@
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  Injector,
-  OnDestroy
-} from "@angular/core";
+import { Component, OnInit, AfterViewInit, Injector } from "@angular/core";
 import { OcxService } from "../core/testservice.service";
 import { FormGroup, FormBuilder } from "@angular/forms";
 
 @Component({
-  selector: "app-lazy",
-  templateUrl: "./lazy.component.html",
-  styleUrls: ["./lazy.component.scss"],
+  selector: "app-foo",
+  templateUrl: "./foo.component.html",
+  styleUrls: ["./foo.component.scss"],
   providers: [OcxService]
 })
-export class LazyComponent implements OnInit, AfterViewInit, OnDestroy {
+export class FooComponent implements OnInit, AfterViewInit {
   protected myService: OcxService;
-
   public count = 0;
 
   heroForm: FormGroup;
   isCitiesControlVisible = true;
   cities: any[] = [
-    { id: 1, name: "Vilnius" },
-    { id: 2, name: "Kaunas" },
-    { id: 3, name: "Pavilnys (Disabled)", disabled: true },
-    { id: 4, name: "Pabradė" }
+    { id: 1, name: "Valleyfield" },
+    { id: 2, name: "Montreal" },
+    { id: 3, name: "Patate (Disabled)", disabled: true },
+    { id: 4, name: "Bob" }
   ];
 
   constructor(injector: Injector, private fb: FormBuilder) {
@@ -52,10 +45,6 @@ export class LazyComponent implements OnInit, AfterViewInit, OnDestroy {
     this.heroForm = this.fb.group({
       selectedCitiesIds: []
     });
-  }
-
-  public ngOnDestroy(): void {
-    console.log("Destroyed!!!!");
   }
 
   public ngAfterViewInit(): void {

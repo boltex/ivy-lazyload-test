@@ -1,14 +1,14 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
+import { HeroLoaderModule } from "@herodevs/hero-loader";
 import { AppComponent } from "./app.component";
 
 @NgModule({
   declarations: [AppComponent],
   // * if FormsModule and ReactiveFormsModule not present here :
   // * we get "No Provider for FormBuilder" in the lazyComponent component
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule],
+  imports: [HeroLoaderModule, BrowserModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,32 +1,28 @@
-import {
-  Component,
-  ViewChild,
-  ViewContainerRef,
-  ComponentFactoryResolver,
-  ChangeDetectionStrategy
-} from "@angular/core";
+import { Component, ViewChild, ViewContainerRef } from "@angular/core";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
   @ViewChild("testOutlet", { read: ViewContainerRef, static: true })
   testOutlet: ViewContainerRef | undefined;
 
-  constructor(private resolver: ComponentFactoryResolver) {}
+  public pathsArray = [];
 
-  onLazy() {
-    import("./lazy/lazy.module").then(({ LazyModule }) => {
-      const componentFromLazyModule = LazyModule.getComponent();
-      const componentFactory = this.resolver.resolveComponentFactory(
-        componentFromLazyModule
-      );
-      const componentRef = this.testOutlet.createComponent(componentFactory);
-      // for event detection
-      componentRef.changeDetectorRef.markForCheck();
-    });
+  constructor() {}
+
+  removeLast() {
+    if (this.pathsArray.length) {
+      this.pathsArray.pop();
+    }
+  }
+
+  onLazy1() {
+    this.pathsArray.push("src/app/lazy/lazy.module#LazyModule");
+  }
+  onLazy2() {
+    this.pathsArray.push("src/app/foo/foo.module#FooModule");
   }
 }

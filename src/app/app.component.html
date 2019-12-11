@@ -4,6 +4,15 @@
 <h2>(check console for output)</h2>
 
 <button type="button"
-        (click)="onLazy()">Lazy load module & add instance of component below</button>
+        (click)="onLazy1()">Lazy load module LAZY</button>
+<button type="button"
+        (click)="onLazy2()">Lazy load module FOO</button>
+<button type="button"
+        (click)="removeLast()">REMOVE LAST</button>
 
 <div #testOutlet></div>
+
+<!-- <hero-loader *ngIf="load"
+             moduleName="src/app/lazy/lazy.module#LazyModule"></hero-loader> -->
+<hero-loader *ngFor="let myPath of pathsArray"
+             [moduleName]="myPath"></hero-loader>
