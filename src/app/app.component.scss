@@ -1,3 +1,19 @@
 h1 {
-  color: green;
+  color: #fff;
+  padding: 6px 16px;
+  background-color: rgb(158, 116, 68);
+  text-shadow: 1px 1px 1px rgba(5, 5, 5, 0.7);
+  text-shadow: 1px 1px 3px rgba(35, 22, 21, 0.6);
+}
+button {
+  margin-right: 6px;
+  border-radius: 3px;
+  padding: 8px 16px;
+}
+.info {
+  color: #808080;
+}
+p,
+h2 {
+  margin-left: 22px;
 }

@@ -11,7 +11,7 @@ export class AppComponent {
 
   public pathsArray = [];
 
-  constructor() {}
+  constructor() { }
 
   removeLast() {
     if (this.pathsArray.length) {
@@ -20,9 +20,9 @@ export class AppComponent {
   }
 
   onLazy1() {
-    this.pathsArray.push("src/app/lazy/lazy.module#LazyModule");
+    this.pathsArray.push("src/app/foo/foo.module#FooModule");
   }
   onLazy2() {
-    this.pathsArray.push("src/app/foo/foo.module#FooModule");
+    this.pathsArray.push("src/app/bar/bar.module#BarModule");
   }
 }

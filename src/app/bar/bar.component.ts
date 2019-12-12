@@ -5,38 +5,39 @@ import {
   Injector,
   OnDestroy
 } from "@angular/core";
-import { OcxService } from "../core/testservice.service";
+import { MyService } from "../core/test-service.service";
 import { FormGroup, FormBuilder } from "@angular/forms";
 
 @Component({
-  selector: "app-lazy",
-  templateUrl: "./lazy.component.html",
-  styleUrls: ["./lazy.component.scss"],
-  providers: [OcxService]
+  selector: "app-bar",
+  templateUrl: "./bar.component.html",
+  styleUrls: ["./bar.component.scss"],
+  providers: [MyService]
 })
-export class LazyComponent implements OnInit, AfterViewInit, OnDestroy {
-  protected myService: OcxService;
+export class BarComponent implements OnInit, AfterViewInit, OnDestroy {
+  protected myService: MyService;
 
-  public count = 0;
+  get count(): number {
+    return this.myService.getCount();
+  }
 
-  heroForm: FormGroup;
-  isCitiesControlVisible = true;
-  cities: any[] = [
+  public heroForm: FormGroup;
+  public isCitiesControlVisible = true;
+  public cities: any[] = [
     { id: 1, name: "Vilnius" },
     { id: 2, name: "Kaunas" },
-    { id: 3, name: "Pavilnys (Disabled)", disabled: true },
-    { id: 4, name: "Pabradė" }
+    { id: 3, name: "Paris (Disabled)", disabled: true },
+    { id: 4, name: "Kiev" }
   ];
 
   constructor(injector: Injector, private fb: FormBuilder) {
     console.log("component constructor running!");
-    this.myService = injector.get(OcxService);
+    this.myService = injector.get(MyService);
   }
 
-  public testme(): void {
-    // Test the individualy loaded service
+  public testMe(): void {
+    // Test the individually loaded service
     this.myService.test();
-    this.count = this.count + 1;
   }
 
   public toggleCitiesControl() {
@@ -54,11 +55,11 @@ export class LazyComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  public ngOnDestroy(): void {
-    console.log("Destroyed!!!!");
-  }
-
   public ngAfterViewInit(): void {
     console.log("after init");
+  }
+
+  public ngOnDestroy(): void {
+    console.log("Destroyed!!!!");
   }
 }

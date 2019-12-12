@@ -1,14 +1,14 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { LazyComponent } from "./lazy.component";
-import { OcxService } from "../core/testservice.service";
+import { BarComponent } from "./bar.component";
+import { MyService } from "../core/test-service.service";
 import { NgSelectModule } from "@ng-select/ng-select";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [CommonModule, NgSelectModule, FormsModule, ReactiveFormsModule],
-  providers: [OcxService],
-  declarations: [LazyComponent],
-  bootstrap: [LazyComponent]
+  providers: [MyService],
+  declarations: [BarComponent],
+  bootstrap: [BarComponent]
 })
-export class LazyModule {}
+export class BarModule { }

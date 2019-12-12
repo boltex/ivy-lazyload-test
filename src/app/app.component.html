@@ -1,18 +1,22 @@
 <h1>
   Angular: Ivy Lazy Loading Test with ng-select
 </h1>
-<h2>(check console for output)</h2>
+<h2>(also check console for output)</h2>
+<p class="info">
+  FOO and BAR Modules are lazy-loaded only once when required.<br>
+  They each contain a component that is instantiated, and removed, with the
+  buttons below.
+</p>
 
 <button type="button"
-        (click)="onLazy1()">Lazy load module LAZY</button>
+        (click)="onLazy2()">add FOO component</button>
 <button type="button"
-        (click)="onLazy2()">Lazy load module FOO</button>
+        (click)="onLazy1()">add BAR component</button>
 <button type="button"
+        [disabled]="!pathsArray.length"
         (click)="removeLast()">REMOVE LAST</button>
 
 <div #testOutlet></div>
 
-<!-- <hero-loader *ngIf="load"
-             moduleName="src/app/lazy/lazy.module#LazyModule"></hero-loader> -->
 <hero-loader *ngFor="let myPath of pathsArray"
              [moduleName]="myPath"></hero-loader>

@@ -1,35 +1,43 @@
-import { Component, OnInit, AfterViewInit, Injector } from "@angular/core";
-import { OcxService } from "../core/testservice.service";
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  Injector,
+  OnDestroy
+} from "@angular/core";
+import { MyService } from "../core/test-service.service";
 import { FormGroup, FormBuilder } from "@angular/forms";
 
 @Component({
   selector: "app-foo",
   templateUrl: "./foo.component.html",
   styleUrls: ["./foo.component.scss"],
-  providers: [OcxService]
+  providers: [MyService]
 })
-export class FooComponent implements OnInit, AfterViewInit {
-  protected myService: OcxService;
-  public count = 0;
+export class FooComponent implements OnInit, AfterViewInit, OnDestroy {
+  protected myService: MyService;
 
-  heroForm: FormGroup;
-  isCitiesControlVisible = true;
-  cities: any[] = [
+  get count(): number {
+    return this.myService.getCount();
+  }
+
+  public heroForm: FormGroup;
+  public isCitiesControlVisible = true;
+  public cities: any[] = [
     { id: 1, name: "Valleyfield" },
     { id: 2, name: "Montreal" },
-    { id: 3, name: "Patate (Disabled)", disabled: true },
-    { id: 4, name: "Bob" }
+    { id: 3, name: "Longueuil (Disabled)", disabled: true },
+    { id: 4, name: "Laval" }
   ];
 
   constructor(injector: Injector, private fb: FormBuilder) {
     console.log("component constructor running!");
-    this.myService = injector.get(OcxService);
+    this.myService = injector.get(MyService);
   }
 
-  public testme(): void {
-    // Test the individualy loaded service
+  public testMe(): void {
+    // Test the individually loaded service
     this.myService.test();
-    this.count = this.count + 1;
   }
 
   public toggleCitiesControl() {
@@ -49,5 +57,9 @@ export class FooComponent implements OnInit, AfterViewInit {
 
   public ngAfterViewInit(): void {
     console.log("after init");
+  }
+
+  public ngOnDestroy(): void {
+    console.log("Destroyed!!!!");
   }
 }
