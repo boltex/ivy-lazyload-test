@@ -6,9 +6,6 @@ import { Component, ViewChild, ViewContainerRef } from "@angular/core";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-  @ViewChild("testOutlet", { read: ViewContainerRef, static: true })
-  testOutlet: ViewContainerRef | undefined;
-
   public pathsArray = [];
 
   constructor() { }
