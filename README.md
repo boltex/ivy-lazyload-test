@@ -2,8 +2,8 @@
 
 Test project to tryout Lazy-Loading with Ivy (with aot enabled)
 
-- (Success) Test loading a service without "provideIn root" to have different instances of the service for each component.
-- (Failed) Test using 3rd party libraries such as ng-select.
+- Test loading a service without "provideIn root" to have different instances of the service for each component.
+- Test using 3rd party libraries such as ng-select.
 
 ## Development server
 
